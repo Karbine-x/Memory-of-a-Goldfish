@@ -2,5 +2,5 @@ package MG.Core;
 
 public class Tile
 {
-    int id;
+    public int id;
 }
