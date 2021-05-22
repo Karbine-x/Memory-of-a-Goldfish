@@ -21,27 +21,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LinearLayout ll = (LinearLayout)findViewById(R.id.game_main);
-        for (int i = 0; i < 4; ++i)
-        {
-            LinearLayout row = new LinearLayout(this);
-            row.setGravity(Gravity.CENTER);
-            LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 0.25f);
-            row.setLayoutParams(p);
-            ll.addView(row);
-
-            for (int j = 0; j < 3; ++j)
-            {
-                LinearLayout cell = new LinearLayout(this);
-                cell.setGravity(Gravity.CENTER);
-                LinearLayout.LayoutParams q = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 0.33333333f);
-                cell.setLayoutParams(q);
-                Button b = new Button(this);
-                LinearLayout.LayoutParams r = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-                b.setLayoutParams(r);
-                row.addView(cell);
-                cell.addView(b);
-            }
-        }
+        RelativeLayout mainView = (RelativeLayout)findViewById(R.id.mainContainer);
+        LinearLayout gameView = GameView.Create(3, 4, this);
+        mainView.addView(gameView);
     }
 }
