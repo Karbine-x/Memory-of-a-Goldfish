@@ -1,9 +1,12 @@
 package MG.Core;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.widget.LinearLayoutCompat;
@@ -53,22 +56,16 @@ public class GameView {
 
             for (int j = 0; j < width; ++j)
             {
-                //create a new LinearLayout for each button
-                LinearLayout cell = new LinearLayout(context);
-                cell.setGravity(Gravity.CENTER);
-                //Scale the button cells so they fit evenly inside the row
-                LinearLayout.LayoutParams cellParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams tileParams = new LinearLayout.LayoutParams(
                         matchParent, matchParent, cellWeight
                 );
-                cell.setLayoutParams(cellParams);
-                Button tile = new Button(context);
-                LinearLayout.LayoutParams tileParams = new LinearLayout.LayoutParams(
-                        matchParent, matchParent
-                );
+                ImageButton tile = new ImageButton(context);
                 tile.setLayoutParams(tileParams);
                 tile.setId(id++);
-                row.addView(cell);
-                cell.addView(tile);
+                tile.setClipToOutline(true);
+                tile.setPadding(0, 0, 0, 0);
+                tile.setScaleType(ImageView.ScaleType.FIT_XY);
+                row.addView(tile);
             }
         }
 

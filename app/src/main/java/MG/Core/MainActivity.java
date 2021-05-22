@@ -11,6 +11,8 @@ import android.view.animation.GridLayoutAnimationController;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.GridView;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -24,5 +26,7 @@ public class MainActivity extends AppCompatActivity {
         RelativeLayout mainView = (RelativeLayout)findViewById(R.id.mainContainer);
         LinearLayout gameView = GameView.Create(3, 4, this);
         mainView.addView(gameView);
+
+        ((ImageButton)gameView.findViewById(0)).setImageResource(R.drawable.goldfish2_94);
     }
 }
