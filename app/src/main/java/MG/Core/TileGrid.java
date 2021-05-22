@@ -2,10 +2,13 @@ package MG.Core;
 
 import android.util.Pair;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 
-public class TileGrid
+public class TileGrid implements Iterable<Tile>
 {
     public TileGrid(int width, int height)
     {
@@ -60,12 +63,48 @@ public class TileGrid
         }
     }
 
+    public Tile get(int index)
+    {
+        return grid.get(index);
+    }
 
+    public void flip(int index)
+    {
+        Tile selected = get(index);
 
+        if (!selected.faceUp)
+        {
+            selected.faceUp = true;
+            if (currentFlippedTile == null)
+            {
+                currentFlippedTile = selected;
+            }
+            else
+            {
+                if (selected.id == currentFlippedTile.id)
+                {
+                    selected.matched = true;
+                    currentFlippedTile.matched = true;
+                }
+                else
+                {
+                    selected.faceUp = false;
+                    currentFlippedTile.faceUp = false;
+                }
 
+                currentFlippedTile = null;
+            }
+        }
+    }
+
+    @Override
+    public Iterator<Tile> iterator() {
+        return grid.iterator();
+    }
 
     private final ArrayList<Tile> grid;
     private final int width;
     private final int height;
     private final int nTiles;
+    private Tile currentFlippedTile;
 }

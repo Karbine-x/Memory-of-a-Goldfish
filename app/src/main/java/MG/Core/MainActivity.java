@@ -23,10 +23,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RelativeLayout mainView = (RelativeLayout)findViewById(R.id.mainContainer);
-        LinearLayout gameView = GameView.Create(3, 4, this);
-        mainView.addView(gameView);
+        //RelativeLayout mainView = (RelativeLayout)findViewById(R.id.mainContainer);
+        //ViewGroup gameView = GameView.Create(3, 4, this);
+        //mainView.addView(gameView);
 
-        ((ImageButton)gameView.findViewById(0)).setImageResource(R.drawable.goldfish2_94);
+        //((ImageButton)gameView.findViewById(0)).setImageResource(R.drawable.goldfish2_94);
     }
 }
