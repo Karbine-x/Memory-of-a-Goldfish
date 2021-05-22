@@ -20,13 +20,9 @@ public class TileGrid
         grid = new ArrayList<>();
 
         //create the tile grid
-        for (int i = 0; i < width; ++i)
+        for (int i = 0; i < nTiles; ++i)
         {
-            grid.add(new ArrayList<>());
-            for (int j = 0; j < height; ++j)
-            {
-                grid.get(i).add(new Tile());
-            }
+            grid.add(new Tile());
         }
 
         //Create a set of unique IDs. Each ID will be assigned to 2 random tiles
@@ -38,38 +34,37 @@ public class TileGrid
 
         //Create a list of all tile coordinates, used to index in to
         //the tile grid to assign IDs
-        ArrayList<Pair<Integer, Integer>> tileCoords = new ArrayList<>();
-        for (int i = 0; i < width; ++i)
+        ArrayList<Integer> tileIndices = new ArrayList<>();
+        for (int i = 0; i < height; ++i)
         {
-            for (int j = 0; j < height; ++j)
-            {
-                tileCoords.add(new Pair<>(i, j));
-            }
+            tileIndices.add(i);
         }
 
         //randomise the tile coordinates
-        Collections.shuffle(tileCoords);
+        Collections.shuffle(tileIndices);
 
         while (IDs.size() > 0)
         {
             int currentId = IDs.get(IDs.size() - 1);
-            Pair<Integer, Integer> firstTileCoords = tileCoords.get(tileCoords.size() - 1);
-            Pair<Integer, Integer> secondTileCoords = tileCoords.get(tileCoords.size() - 2);
-            Tile firstTile = grid.get(firstTileCoords.first).get(firstTileCoords.second);
-            Tile secondTile = grid.get(secondTileCoords.first).get(secondTileCoords.second);
+            int firstTileIndex = tileIndices.get(tileIndices.size() - 1);
+            int secondTileIndex = tileIndices.get(tileIndices.size() - 2);
+            Tile firstTile = grid.get(firstTileIndex);
+            Tile secondTile = grid.get(secondTileIndex);
             //assign the id
             firstTile.id = currentId;
             secondTile.id = currentId;
             //remove the id, first and second tile coords so they aren't reused
             IDs.remove(IDs.size() - 1);
-            tileCoords.remove(tileCoords.size() - 1);
-            tileCoords.remove(tileCoords.size() - 1);
+            tileIndices.remove(tileIndices.size() - 1);
+            tileIndices.remove(tileIndices.size() - 1);
         }
     }
 
 
 
-    private ArrayList<ArrayList<Tile>> grid;
+
+
+    private final ArrayList<Tile> grid;
     private final int width;
     private final int height;
     private final int nTiles;
