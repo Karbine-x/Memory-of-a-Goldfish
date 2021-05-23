@@ -33,7 +33,10 @@ public class GameManager
 
     public void display(ViewGroup view)
     {
-        view.addView(this.view.asViewGroup());
+        View game = this.view.asViewGroup();
+        if (game.getParent() != null)
+            ((ViewGroup)game.getParent()).removeView(game);
+        view.addView(game);
     }
 
     private void addOnClickListeners()
@@ -59,7 +62,7 @@ public class GameManager
             if (!curr.matched && !curr.faceUp)
             {
                 img.setClickable(true);
-                img.setImageResource(-1);
+                img.setImageResource(R.drawable.tileback_94);
             }
         }
     }

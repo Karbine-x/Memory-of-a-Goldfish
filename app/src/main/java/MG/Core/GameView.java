@@ -80,6 +80,7 @@ public class GameView implements Iterable<ImageView> {
                 tile.setClipToOutline(true);
                 tile.setPadding(0, 0, 0, 0);
                 tile.setScaleType(ImageView.ScaleType.FIT_XY);
+                tile.setImageResource(R.drawable.tileback_94);
                 row.addView(tile);
             }
         }

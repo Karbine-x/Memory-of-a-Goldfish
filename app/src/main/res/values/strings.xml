@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">Memory of a Goldfish</string>
+    <string name="app_name">Memory of a Goldfish - Version 1.0</string>
+    <string name="app_name_short">Memory of a Goldfish</string>
+    <string name="app_about">About</string>
+    <string name="app_desc">How to play:</string>
+    <string name="app_desc_cont_1">
+        - Click the tiles to turn them over.
+    </string>
+    <string name="app_desc_cont_2">
+        - Match the goldfish pairs to win.
+    </string>
+    <string name="app_settings_str">Settings:</string>
+    <string name="app_setting_enable_sound_desc">Enable Sound</string>
+    <string name="app_menu_play">Play</string>
+    <string name="app_menu_scoreboard">High Scores</string>
+    <string name="app_menu_achievements">Achievements</string>
+    <string name="app_menu_settings">Settings</string>
 </resources>

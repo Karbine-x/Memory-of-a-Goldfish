@@ -1,21 +1,9 @@
 package MG.Core;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.ViewGroup;
-import android.view.animation.GridLayoutAnimationController;
-import android.widget.Button;
-import android.widget.GridLayout;
-import android.widget.GridView;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-
+import android.view.View;
+import android.widget.CheckBox;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,7 +12,35 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
+    @Override
+    public void onBackPressed()
+    {
+        setContentView(R.layout.activity_main);
+    }
+
+    public void onClickPlay(View view)
+    {
+        setContentView(R.layout.activity_game);
+        if (activeGameInstance == null)
+        {
+            startNewGameInstance();
+        }
+        activeGameInstance.display(findViewById(R.id.gameContainer));
+    }
+
+    public void onClickSettings(View view)
+    {
+        setContentView(R.layout.activity_preferences);
+    }
+
+    public void onSoundEnableDisable(View view) {
+        CheckBox box = (CheckBox)view;
+    }
+
+    private void startNewGameInstance()
+    {
         ArrayList<Integer> pics = new ArrayList<>();
         pics.add(R.drawable.goldfish1_94);
         pics.add(R.drawable.goldfish2_94);
@@ -32,7 +48,12 @@ public class MainActivity extends AppCompatActivity {
         pics.add(R.drawable.goldfish4_94);
         pics.add(R.drawable.goldfish5_94);
         pics.add(R.drawable.goldfish6_94);
-        GameManager manager = new GameManager(3, 4, this, pics);
-        manager.display(findViewById(R.id.mainContainer));
+        pics.add(R.drawable.goldfish7_94);
+        pics.add(R.drawable.goldfish8_94);
+        pics.add(R.drawable.goldfish9_94);
+        pics.add(R.drawable.goldfish10_94);
+        activeGameInstance = new GameManager(4, 5, this, pics);
     }
+
+    private GameManager activeGameInstance = null;
 }
