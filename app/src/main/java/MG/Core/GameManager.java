@@ -20,6 +20,10 @@ public class GameManager
         int imgIndex = 0;
         for (Pair<Tile, Tile> p: pairs)
         {
+            if (imgIndex > imageSet.size())
+            {
+                throw new RuntimeException("Not enough images provided for board size");
+            }
             int imgId = imageSet.get(imgIndex++);
             tileIDToImg.put(p.first.id, imgId);
         }
