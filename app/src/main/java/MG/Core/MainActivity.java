@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -23,10 +25,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //RelativeLayout mainView = (RelativeLayout)findViewById(R.id.mainContainer);
-        //ViewGroup gameView = GameView.Create(3, 4, this);
-        //mainView.addView(gameView);
-
-        //((ImageButton)gameView.findViewById(0)).setImageResource(R.drawable.goldfish2_94);
+        ArrayList<Integer> pics = new ArrayList<>();
+        pics.add(R.drawable.goldfish1_94);
+        pics.add(R.drawable.goldfish2_94);
+        pics.add(R.drawable.goldfish3_94);
+        pics.add(R.drawable.goldfish4_94);
+        pics.add(R.drawable.goldfish5_94);
+        pics.add(R.drawable.goldfish6_94);
+        GameManager manager = new GameManager(3, 4, this, pics);
+        manager.display(findViewById(R.id.mainContainer));
     }
 }

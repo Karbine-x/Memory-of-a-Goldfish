@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 public class TileGrid implements Iterable<Tile>
 {
@@ -38,7 +39,7 @@ public class TileGrid implements Iterable<Tile>
         //Create a list of all tile coordinates, used to index in to
         //the tile grid to assign IDs
         ArrayList<Integer> tileIndices = new ArrayList<>();
-        for (int i = 0; i < height; ++i)
+        for (int i = 0; i < nTiles; ++i)
         {
             tileIndices.add(i);
         }
@@ -95,6 +96,23 @@ public class TileGrid implements Iterable<Tile>
                 currentFlippedTile = null;
             }
         }
+    }
+
+    public List<Pair<Tile, Tile>> getIDPairs()
+    {
+        List<Pair<Tile, Tile>> pairs = new ArrayList<>();
+        for (int i = 0; i < grid.size(); ++i)
+        {
+            Tile first = grid.get(i);
+            for(int j = i + 1; j < grid.size(); ++j)
+            {
+                Tile second = grid.get(j);
+                if (second.id == first.id)
+                    pairs.add(new Pair<>(first, second));
+            }
+        }
+
+        return pairs;
     }
 
     @Override
